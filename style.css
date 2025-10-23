@@ -1,0 +1,230 @@
+/* 🎨 PALETA */
+:root{
+  --bg:#0b0f17;
+  --card:#0f172a;
+  --txt:#e5e7eb;
+  --muted:#94a3b8;
+  --border:#1f2937;
+  --grey:#475569;
+  --yellow:#facc15;
+  --green:#22c55e;
+  --shadow:0 8px 18px rgba(0,0,0,.35);
+}
+
+/* RESET */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--txt);
+  font-family:system-ui,Segoe UI,Roboto;
+  min-height:100vh;
+}
+
+/* ===== Encabezado ===== */
+h1{text-align:center;margin:18px 0 8px;font-size:26px;font-weight:700}
+.legend{
+  display:flex;justify-content:center;gap:18px;
+  font-size:13px;color:var(--muted);margin-bottom:20px;
+}
+.legend i{
+  width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px;
+}
+.dot--p{background:var(--grey)}
+.dot--y{background:var(--yellow)}
+.dot--g{background:var(--green)}
+
+/* ===== Bloques ===== */
+.fila{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  max-width:1600px;
+  margin:0 auto;
+  gap:100px;
+  padding:0 20px 40px;
+}
+.bloque{
+  background:var(--card);
+  border:2px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  min-height:520px;
+  position:relative;
+  padding:14px;
+}
+.bloque[data-status="pending"]{border-color:var(--grey)}
+.bloque[data-status="yellow"]{border-color:var(--yellow)}
+.bloque[data-status="green"] {border-color:var(--green)}
+
+/* ==== Bloque Migración ==== */
+.bloque--intro{
+  display:flex;align-items:center;justify-content:center;
+}
+.intro-center{text-align:center;display:flex;flex-direction:column;gap:10px}
+.task--titulo{
+  border:2px dashed var(--grey);
+  padding:10px 16px;border-radius:10px;font-size:16px;
+  cursor:pointer;
+}
+.titulo{font-size:14px;font-weight:800;text-align:center;margin-bottom:4px}
+
+/* ==== Bloques Duo ADS+ADO ==== */
+.bloque--duo{
+  display:grid;grid-template-rows:auto auto 1fr 1fr;gap:10px;
+}
+
+.cabecera{display:flex;justify-content:center}
+.cabecera .task{
+  padding:6px 12px;border-radius:10px;
+  border:1px dashed #3a4a6a;
+  cursor:pointer;
+}
+
+/* Paneles */
+.panel{
+  border:1px solid var(--border);
+  background:#0c1528;
+  border-radius:12px;
+  padding:10px;
+}
+.panel h3{
+  margin:4px 0 8px;
+  font-size:13px;
+  color:#dbeafe;
+}
+
+.subgrupo{
+  border:1px dashed #23324f;
+  border-radius:10px;
+  padding:8px;
+  margin-bottom:10px;
+}
+.subgrupo:last-child{margin-bottom:0}
+
+/* Tareas */
+.task{
+  cursor:pointer;
+  border:1px dashed #3a4a6a;
+  padding:4px 8px;
+  border-radius:8px;
+  font-size:13px;
+  margin-bottom:4px;
+}
+.is-pending{color:var(--muted)}
+.is-yellow{border-color:var(--yellow);color:var(--yellow)}
+.is-green {border-color:var(--green);color:var(--green)}
+
+/* ✅ FLECHAS ENTRE BLOQUES */
+.bloque--intro::before,
+.bloque--intro::after {
+  content:"→";
+  position:absolute;
+  right:-50px;
+  font-size:26px;
+  opacity:.95;
+}
+
+/* MIGRACIÓN → ADS y MIGRACIÓN → ADO */
+.bloque--intro::before { top:33%; }
+.bloque--intro::after  { bottom:33%; }
+
+/* Flechas SOLO en los bloques 2 y 3 */
+.bloque--duo:nth-child(2)::before,
+.bloque--duo:nth-child(2)::after,
+.bloque--duo:nth-child(3)::before,
+.bloque--duo:nth-child(3)::after {
+  content:"→";
+  position:absolute;
+  right:-50px;
+  font-size:26px;
+  opacity:.95;
+}
+
+/* Una arriba y otra abajo */
+.bloque--duo:nth-child(2)::before,
+.bloque--duo:nth-child(3)::before { top:33%; }
+.bloque--duo:nth-child(2)::after,
+.bloque--duo:nth-child(3)::after  { bottom:33%; }
+
+/* Bloque Cierre sin flechas */
+.bloque--duo:nth-child(4)::before,
+.bloque--duo:nth-child(4)::after {
+  display:none;
+}
+/* 💬 Tooltip estilo burbuja profesional */
+.task[data-tooltip] {
+  position: relative;
+}
+
+/* Cuerpo de la burbuja */
+.task[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  left: 105%;
+  transform: translateY(-50%);
+  background: #09AFFF;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .20s ease-in-out, transform .20s ease-in-out;
+  z-index: 999;
+  box-shadow: 0px 5px 14px rgba(0,0,0,0.35);
+}
+
+/* Flechita lateral */
+.task[data-tooltip]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 9px;
+  border-style: solid;
+  border-color: transparent #09AFFF transparent transparent;
+  opacity: 0;
+  transition: opacity .20s ease-in-out;
+  z-index: 999;
+}
+
+/* Mostrar burbuja SOLO al pasar el mouse */
+.task[data-tooltip]:hover::after,
+.task[data-tooltip]:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(2px);
+}
+/* ✅ Tooltip para comentarios internos */
+.task {
+  position: relative;
+}
+
+/* Caja que aparece al hacer hover */
+.task::after {
+  content: "✔️ Check comentario...\A✔️ Check comentario 2...";
+  white-space: pre-line;
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  transform: translateY(-50%);
+  background: #1b2538;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #2b3a55;
+  color: #e5e7eb;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease-in-out;
+  width: 180px;
+  line-height: 1.35;
+  box-shadow: 0 4px 14px rgba(0,0,0,.4);
+  z-index: 30;
+}
+
+/* Solo visible al pasar el mouse */
+.task:hover::after {
+  opacity: 1;
+}
