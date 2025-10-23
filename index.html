@@ -115,5 +115,26 @@
 </div>
 
 <script src="script.js"></script>
+<!-- Firebase App (SDK principal) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<!-- Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AZaSyCckk3cnd406blhgvOxRknoQbFoAfNUJc0",
+    authDomain: "migracionads.firebaseapp.com",
+    databaseURL: "https://migracionads-default-rtdb.firebaseio.com",
+    projectId: "migracionads",
+    storageBucket: "migracionads.appspot.com",
+    messagingSenderId: "242255460413",
+    appId: "1:242255460413:web:442ca0b9e9d97ad1dd5254"
+  };
+
+  // Inicializa Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
+
 </body>
 </html>

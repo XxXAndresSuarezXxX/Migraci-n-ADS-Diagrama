@@ -1,43 +1,66 @@
-const COLORS = {0:'pending',1:'yellow',2:'green'};
+// ===============================
+// 🔹 CONFIGURACIÓN DE COLORES
+// ===============================
+const COLORS = { 0: 'pending', 1: 'yellow', 2: 'green' };
 
-// Cargar estado.json
+// ===============================
+// 🔹 CONEXIÓN CON FIREBASE
+// ===============================
+const firebaseConfig = {
+  apiKey: "AZaSyCckk3cnd406blhgvOxRknoQbFoAfNUJc0",
+  authDomain: "migracionads.firebaseapp.com",
+  databaseURL: "https://migracionads-default-rtdb.firebaseio.com",
+  projectId: "migracionads",
+  storageBucket: "migracionads.appspot.com",
+  messagingSenderId: "242255460413",
+  appId: "1:242255460413:web:442ca0b9e9d97ad1dd5254"
+};
+
+// Inicializar Firebase y la base de datos
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const tareasRef = db.ref("tareas");
+
+// ===============================
+// 🔹 FUNCIONES DE SINCRONIZACIÓN
+// ===============================
+
+// Cargar estado desde Firebase
 async function cargarEstado() {
   try {
-    const res = await fetch('estado.json?_=' + Date.now());
-    const data = await res.json();
-    document.querySelectorAll('.task').forEach(t => {
+    const snapshot = await tareasRef.once("value");
+    const data = snapshot.val() || {};
+    document.querySelectorAll(".task").forEach(t => {
       const key = t.dataset.key;
-      const val = data[key];
-      const state = val ? 2 : 0;
+      const state = data[key] !== undefined ? data[key] : 0;
       t.dataset.state = state;
       setTaskVisual(t);
       computeBlockStatus(t.closest('.bloque'));
     });
   } catch (err) {
-    console.error('Error cargando estado:', err);
+    console.error("Error cargando estado desde Firebase:", err);
   }
 }
 
-// Guardar estado en el servidor
+// Guardar estado en Firebase
 async function guardarEstado() {
   const nuevo = {};
-  document.querySelectorAll('.task').forEach(t => {
-    nuevo[t.dataset.key] = (+t.dataset.state === 2);
+  document.querySelectorAll(".task").forEach(t => {
+    nuevo[t.dataset.key] = +t.dataset.state;
   });
-  await fetch('/guardar', {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(nuevo)
-  });
+  await tareasRef.set(nuevo);
 }
 
-function setTaskVisual(el){
+// ===============================
+// 🔹 FUNCIONES DE INTERFAZ
+// ===============================
+function setTaskVisual(el) {
   const st = +el.dataset.state || 0;
-  el.classList.remove('is-pending','is-yellow','is-green');
-  el.classList.add('is-'+COLORS[st]);
+  el.classList.remove('is-pending', 'is-yellow', 'is-green');
+  el.classList.add('is-' + COLORS[st]);
 }
 
-function computeBlockStatus(block){
+function computeBlockStatus(block) {
   const states = [...block.querySelectorAll('.task')].map(t => +t.dataset.state || 0);
   let status = 'pending';
   if (states.some(s => s === 1)) status = 'yellow';
@@ -45,15 +68,22 @@ function computeBlockStatus(block){
   block.dataset.status = status;
 }
 
-document.addEventListener('click', e=>{
+// ===============================
+// 🔹 EVENTOS DE INTERACCIÓN
+// ===============================
+document.addEventListener('click', e => {
   const t = e.target.closest('.task');
-  if(!t) return;
+  if (!t) return;
   let st = (+t.dataset.state || 0) + 1;
-  if(st>2) st=0;
+  if (st > 2) st = 0;
   t.dataset.state = st;
   setTaskVisual(t);
   computeBlockStatus(t.closest('.bloque'));
-  guardarEstado(); // 💾 guarda cambios
+  guardarEstado(); // 💾 guarda cambios en Firebase
 });
 
+// ===============================
+// 🔹 INICIO AUTOMÁTICO
+// ===============================
 document.addEventListener('DOMContentLoaded', cargarEstado);
+
