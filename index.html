@@ -4,233 +4,164 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Migración ADO – 4 bloques</title>
-
-<!-- Vinculación del CSS externo -->
 <link rel="stylesheet" href="style.css" />
-
 </head>
 <body>
 
-  <h1>MIGRACIÓN</h1>
+<h1>MIGRACIÓN</h1>
 
-  <div class="legend">
-    <span><i class="dot dot--p"></i>Pendiente</span>
-    <span><i class="dot dot--y"></i>En curso (1er clic)</span>
-    <span><i class="dot dot--g"></i>Listo (2º clic)</span>
-  </div>
+<div class="legend">
+  <span><i class="dot dot--p"></i>Pendiente</span>
+  <span><i class="dot dot--y"></i>En curso (1er clic)</span>
+  <span><i class="dot dot--g"></i>Listo (2º clic)</span>
+</div>
 
+<section class="fila" id="fila">
+  <!-- BLOQUE 1 -->
+  <article class="bloque bloque--intro" data-status="pending">
+    <div class="intro-center">
+      <div class="titulo">MIGRACIÓN</div>
+      <span class="task task--titulo" data-key="plan_estrategico" data-state="0" data-tooltip="comentario...">
+        Plan estratégico
+      </span>
+    </div>
+  </article>
 
-  <section class="fila" id="fila">
+  <!-- BLOQUE 2 -->
+  <article class="bloque bloque--duo" data-status="pending">
+    <div class="titulo titulo--centro">ESTRUCTURA BASE</div>
+    <div class="cabecera">
+      <span class="task" data-key="checklist_etapa" data-state="0" data-tooltip="comentario...">Checklist etapa</span>
+    </div>
 
-    <!-- ✅ BLOQUE 1 -->
-    <article class="bloque bloque--intro" data-status="pending">
-      <div class="intro-center">
-        <div class="titulo">MIGRACIÓN</div>
-        <span class="task task--titulo" data-state="0" data-tooltip="comentario...">
-          Plan estratégico
-        </span>
-      </div>
-    </article>
-
-
-    <!-- ✅ BLOQUE 2 -->
-    <article class="bloque bloque--duo" data-status="pending">
-
-      <div class="titulo titulo--centro">ESTRUCTURA BASE</div>
-
-      <div class="cabecera">
-        <span class="task" data-state="0" data-tooltip="comentario...">Checklist etapa</span>
-      </div>
-
-
-      <!-- ADS -->
-      <div class="panel panel--ads">
-        <h3>ADS – Azure DevOps Services</h3>
-
-        <div class="subgrupo">
-          <strong>Crear Proyectos</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Estructura SAFe</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Equipos & Roles</li>
-          </ul>
-        </div>
-
-        <div class="subgrupo">
-          <strong>TRB – Medios / Cash</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Proceso SAFe</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Estructura Wiki</li>
-          </ul>
-        </div>
+    <div class="panel panel--ads">
+      <h3>ADS – Azure DevOps Services</h3>
+      <div class="subgrupo">
+        <strong>Crear Proyectos</strong>
+        <ul class="tareas">
+          <li class="task" data-key="estructura_safe" data-state="0" data-tooltip="comentario...">Estructura SAFe</li>
+          <li class="task" data-key="equipos_roles" data-state="0" data-tooltip="comentario...">Equipos & Roles</li>
+        </ul>
       </div>
 
+      <div class="subgrupo">
+        <strong>TRB – Medios / Cash</strong>
+        <ul class="tareas">
+          <li class="task" data-key="proceso_safe" data-state="0" data-tooltip="comentario...">Proceso SAFe</li>
+          <li class="task" data-key="estructura_wiki" data-state="0" data-tooltip="comentario...">Estructura Wiki</li>
+        </ul>
+      </div>
+    </div>
 
-      <!-- ADO -->
-      <div class="panel panel--ado">
-        <h3>ADO – Server (on-prem)</h3>
-
-        <div class="subgrupo">
-          <strong>Integraciones</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Relaciones / Links</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Billing</li>
-          </ul>
-        </div>
-
-        <div class="subgrupo">
-          <strong>Extensiones</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Planning Poker</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Otras extensiones</li>
-          </ul>
-        </div>
+    <div class="panel panel--ado">
+      <h3>ADO – Server (on-prem)</h3>
+      <div class="subgrupo">
+        <strong>Integraciones</strong>
+        <ul class="tareas">
+          <li class="task" data-key="relaciones_links" data-state="0" data-tooltip="comentario...">Relaciones / Links</li>
+          <li class="task" data-key="billing" data-state="0" data-tooltip="comentario...">Billing</li>
+        </ul>
       </div>
 
-    </article>
-
-
-    <!-- ✅ BLOQUE 3 -->
-    <article class="bloque bloque--duo" data-status="pending">
-
-      <div class="titulo titulo--centro">ESTRUCTURAS</div>
-
-      <div class="cabecera">
-        <span class="task" data-state="0" data-tooltip="comentario...">Validación de diseño</span>
+      <div class="subgrupo">
+        <strong>Extensiones</strong>
+        <ul class="tareas">
+          <li class="task" data-key="planning_poker" data-state="0" data-tooltip="comentario...">Planning Poker</li>
+          <li class="task" data-key="otras_extensiones" data-state="0" data-tooltip="comentario...">Otras extensiones</li>
+        </ul>
       </div>
+    </div>
+  </article>
 
+  <!-- BLOQUE 3 -->
+  <article class="bloque bloque--duo" data-status="pending">
+    <div class="titulo titulo--centro">ESTRUCTURAS</div>
+    <div class="cabecera">
+      <span class="task" data-key="validacion_diseno" data-state="0" data-tooltip="comentario...">Validación de diseño</span>
+    </div>
 
-      <!-- ADS -->
-      <div class="panel panel--ads">
-        <h3>ADS</h3>
-
-        <div class="subgrupo">
-          <strong>Overview</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Dashboards</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Reportes</li>
-          </ul>
-        </div>
-
-        <div class="subgrupo">
-          <strong>Operación</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Roles / Permisos</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Políticas</li>
-          </ul>
-        </div>
+    <div class="panel panel--ads">
+      <h3>ADS</h3>
+      <div class="subgrupo">
+        <strong>Overview</strong>
+        <ul class="tareas">
+          <li class="task" data-key="dashboards" data-state="0" data-tooltip="comentario...">Dashboards</li>
+          <li class="task" data-key="reportes" data-state="0" data-tooltip="comentario...">Reportes</li>
+        </ul>
       </div>
-
-
-      <!-- ADO -->
-      <div class="panel panel--ado">
-        <h3>ADO</h3>
-
-        <div class="subgrupo">
-          <strong>Wiki</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Árbol de páginas</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Runbooks</li>
-          </ul>
-        </div>
-
-        <div class="subgrupo">
-          <strong>Soporte</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Backups</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Mantenimiento</li>
-          </ul>
-        </div>
+      <div class="subgrupo">
+        <strong>Operación</strong>
+        <ul class="tareas">
+          <li class="task" data-key="roles_permisos" data-state="0" data-tooltip="comentario...">Roles / Permisos</li>
+          <li class="task" data-key="politicas" data-state="0" data-tooltip="comentario...">Políticas</li>
+        </ul>
       </div>
+    </div>
 
-    </article>
-
-
-    <!-- ✅ BLOQUE 4 -->
-    <article class="bloque bloque--duo" data-status="pending">
-
-      <div class="titulo titulo--centro">CIERRE</div>
-
-      <div class="cabecera">
-        <span class="task" data-state="0" data-tooltip="comentario...">Entrega final</span>
+    <div class="panel panel--ado">
+      <h3>ADO</h3>
+      <div class="subgrupo">
+        <strong>Wiki</strong>
+        <ul class="tareas">
+          <li class="task" data-key="arbol_paginas" data-state="0" data-tooltip="comentario...">Árbol de páginas</li>
+          <li class="task" data-key="runbooks" data-state="0" data-tooltip="comentario...">Runbooks</li>
+        </ul>
       </div>
-
-      <!-- ADS -->
-      <div class="panel panel--ads">
-        <h3>ADS</h3>
-
-        <div class="subgrupo">
-          <strong>Adopción</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">KPIs</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Encuestas</li>
-          </ul>
-        </div>
-
-        <div class="subgrupo">
-          <strong>Capacitación</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Workshops</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Guías rápidas</li>
-          </ul>
-        </div>
+      <div class="subgrupo">
+        <strong>Soporte</strong>
+        <ul class="tareas">
+          <li class="task" data-key="backups" data-state="0" data-tooltip="comentario...">Backups</li>
+          <li class="task" data-key="mantenimiento" data-state="0" data-tooltip="comentario...">Mantenimiento</li>
+        </ul>
       </div>
+    </div>
+  </article>
 
-      <!-- ADO -->
-      <div class="panel panel--ado">
-        <h3>ADO</h3>
+  <!-- BLOQUE 4 -->
+  <article class="bloque bloque--duo" data-status="pending">
+    <div class="titulo titulo--centro">CIERRE</div>
+    <div class="cabecera">
+      <span class="task" data-key="entrega_final" data-state="0" data-tooltip="comentario...">Entrega final</span>
+    </div>
 
-        <div class="subgrupo">
-          <strong>Reporte</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Migrado vs. pendiente</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Hallazgos</li>
-          </ul>
-        </div>
-
-        <div class="subgrupo">
-          <strong>Cierre técnico</strong>
-          <ul class="tareas">
-            <li class="task" data-state="0" data-tooltip="comentario...">Archivos finales</li>
-            <li class="task" data-state="0" data-tooltip="comentario...">Desactivaciones</li>
-          </ul>
-        </div>
+    <div class="panel panel--ads">
+      <h3>ADS</h3>
+      <div class="subgrupo">
+        <strong>Adopción</strong>
+        <ul class="tareas">
+          <li class="task" data-key="kpis" data-state="0" data-tooltip="comentario...">KPIs</li>
+          <li class="task" data-key="encuestas" data-state="0" data-tooltip="comentario...">Encuestas</li>
+        </ul>
       </div>
+      <div class="subgrupo">
+        <strong>Capacitación</strong>
+        <ul class="tareas">
+          <li class="task" data-key="workshops" data-state="0" data-tooltip="comentario...">Workshops</li>
+          <li class="task" data-key="guias_rapidas" data-state="0" data-tooltip="comentario...">Guías rápidas</li>
+        </ul>
+      </div>
+    </div>
 
-    </article>
+    <div class="panel panel--ado">
+      <h3>ADO</h3>
+      <div class="subgrupo">
+        <strong>Reporte</strong>
+        <ul class="tareas">
+          <li class="task" data-key="migrado_vs_pendiente" data-state="0" data-tooltip="comentario...">Migrado vs. pendiente</li>
+          <li class="task" data-key="hallazgos" data-state="0" data-tooltip="comentario...">Hallazgos</li>
+        </ul>
+      </div>
+      <div class="subgrupo">
+        <strong>Cierre técnico</strong>
+        <ul class="tareas">
+          <li class="task" data-key="archivos_finales" data-state="0" data-tooltip="comentario...">Archivos finales</li>
+          <li class="task" data-key="desactivaciones" data-state="0" data-tooltip="comentario...">Desactivaciones</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</section>
 
-  </section>
-
-
-<script>
-  const COLORS = {0:'pending',1:'yellow',2:'green'};
-
-  function setTaskVisual(el){
-    const st = +el.getAttribute('data-state') || 0;
-    el.classList.remove('is-pending','is-yellow','is-green');
-    el.classList.add('is-'+COLORS[st]);
-  }
-
-  function computeBlockStatus(block){
-    const states = [...block.querySelectorAll('.task')].map(t => +t.getAttribute('data-state') || 0);
-    let status = 'pending';
-    if (states.some(s => s === 1)) status = 'yellow';
-    else if (states.length && states.every(s => s === 2)) status = 'green';
-    block.dataset.status = status;
-  }
-
-  document.addEventListener('click', (e)=>{
-    const t = e.target.closest('.task');
-    if(!t) return;
-    let st = (+t.getAttribute('data-state') || 0) + 1;
-    if (st > 2) st = 0;
-    t.setAttribute('data-state', String(st));
-    setTaskVisual(t);
-    computeBlockStatus(t.closest('.bloque'));
-  });
-
-  document.querySelectorAll('.task').forEach(setTaskVisual);
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>

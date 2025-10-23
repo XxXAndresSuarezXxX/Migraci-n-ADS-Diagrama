@@ -1,45 +1,30 @@
 {
   "plan_estrategico": false,
-
   "checklist_etapa": false,
-
   "estructura_safe": false,
   "equipos_roles": false,
-
   "proceso_safe": false,
   "estructura_wiki": false,
-
   "relaciones_links": false,
   "billing": false,
-
   "planning_poker": false,
   "otras_extensiones": false,
-
   "validacion_diseno": false,
-
   "dashboards": false,
   "reportes": false,
-
   "roles_permisos": false,
   "politicas": false,
-
   "arbol_paginas": false,
   "runbooks": false,
-
   "backups": false,
   "mantenimiento": false,
-
   "entrega_final": false,
-
   "kpis": false,
   "encuestas": false,
-
   "workshops": false,
   "guias_rapidas": false,
-
   "migrado_vs_pendiente": false,
   "hallazgos": false,
-
   "archivos_finales": false,
   "desactivaciones": false
 }

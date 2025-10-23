@@ -1,45 +1,41 @@
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
+import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { Octokit } from '@octokit/rest';
 
 const app = express();
 app.use(express.json());
+app.use(express.static('.'));
 
-// Servir el index.html y assets desde la carpeta actual
-app.use(express.static(path.join(__dirname, '.')));
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const REPO_OWNER = 'XxXAndresSuarezXxX';
+const REPO_NAME = 'Migraci-n-ADS-Diagrama';
+const FILE_PATH = 'estado.json';
+const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
-const ESTADO_FILE = path.join(__dirname, 'estado.json');
-
-// Leer estado del JSON
-app.get('/estado', (req, res) => {
-  fs.readFile(ESTADO_FILE, 'utf8', (err, data) => {
-    if (err) {
-      console.error('Error leyendo estado.json:', err);
-      return res.json({});
-    }
-    res.json(JSON.parse(data));
-  });
-});
-
-// Actualizar un item
-app.post('/actualizar', (req, res) => {
-  const { key, valor } = req.body;
-
-  fs.readFile(ESTADO_FILE, 'utf8', (err, data) => {
-    const estado = err ? {} : JSON.parse(data);
-
-    if (key in estado) {
-      estado[key] = valor;
-      fs.writeFile(ESTADO_FILE, JSON.stringify(estado, null, 2), 'utf8', () => {
-        console.log(`✔ Actualizado: ${key} = ${valor}`);
-        res.json({ ok: true });
-      });
-    } else {
-      console.warn(`⚠ Key no encontrada: ${key}`);
-      res.json({ ok: false, error: 'Clave inexistente' });
-    }
-  });
+app.post('/guardar', async (req,res)=>{
+  try {
+    const nuevoContenido = JSON.stringify(req.body, null, 2);
+    const { data } = await octokit.repos.getContent({
+      owner: REPO_OWNER,
+      repo: REPO_NAME,
+      path: FILE_PATH
+    });
+    const sha = data.sha;
+    await octokit.repos.createOrUpdateFileContents({
+      owner: REPO_OWNER,
+      repo: REPO_NAME,
+      path: FILE_PATH,
+      message: 'Actualización automática del estado',
+      content: Buffer.from(nuevoContenido).toString('base64'),
+      sha
+    });
+    res.json({ok:true});
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({error:'No se pudo guardar'});
+  }
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Servidor activo en puerto ${PORT}`));
+app.listen(PORT, ()=>console.log('Servidor corriendo en puerto', PORT));
