@@ -262,3 +262,6 @@ h1 {
   height: 2px;
   background: rgba(255,255,255,0.08);
 }
+
+.is-yellow { background: color-mix(in oklab, var(--yellow) 12%, transparent); }
+.is-green  { background: color-mix(in oklab, var(--green)  12%, transparent); }

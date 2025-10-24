@@ -41,14 +41,14 @@
         <div class="subgrupo">
           <strong>Checklist etapa</strong>
           <ul class="tareas">
-            <li class="task" data-key="checklist_etapa" data-state="0">Checklist general</li>
+            <li class="task" data-key="ads.base.checklist_general" data-state="0">Checklist general</li>
           </ul>
         </div>
         <div class="subgrupo">
           <strong>Crear Proyectos</strong>
           <ul class="tareas">
-            <li class="task" data-key="estructura_safe" data-state="0">Estructura SAFe</li>
-            <li class="task" data-key="equipos_roles" data-state="0">Equipos & Roles</li>
+            <li class="task" data-key="ads.base.crear_proyectos.estructura_safe" data-state="0">Estructura SAFe</li>
+            <li class="task" data-key="ads.base.crear_proyectos.equipos_roles" data-state="0">Equipos &amp; Roles</li>
           </ul>
         </div>
       </article>
@@ -58,8 +58,8 @@
         <div class="subgrupo">
           <strong>Overview</strong>
           <ul class="tareas">
-            <li class="task" data-key="dashboards" data-state="0">Dashboards</li>
-            <li class="task" data-key="reportes" data-state="0">Reportes</li>
+            <li class="task" data-key="ads.estructuras.overview.dashboards" data-state="0">Dashboards</li>
+            <li class="task" data-key="ads.estructuras.overview.reportes" data-state="0">Reportes</li>
           </ul>
         </div>
       </article>
@@ -69,8 +69,8 @@
         <div class="subgrupo">
           <strong>Adopción</strong>
           <ul class="tareas">
-            <li class="task" data-key="kpis" data-state="0">KPIs</li>
-            <li class="task" data-key="encuestas" data-state="0">Encuestas</li>
+            <li class="task" data-key="ads.cierre.adopcion.kpis" data-state="0">KPIs</li>
+            <li class="task" data-key="ads.cierre.adopcion.encuestas" data-state="0">Encuestas</li>
           </ul>
         </div>
       </article>
@@ -83,8 +83,8 @@
         <div class="subgrupo">
           <strong>Integraciones</strong>
           <ul class="tareas">
-            <li class="task" data-key="relaciones_links" data-state="0">Relaciones / Links</li>
-            <li class="task" data-key="billing" data-state="0">Billing</li>
+            <li class="task" data-key="ado.base.integraciones.relaciones_links" data-state="0">Relaciones / Links</li>
+            <li class="task" data-key="ado.base.integraciones.billing" data-state="0">Billing</li>
           </ul>
         </div>
       </article>
@@ -94,8 +94,8 @@
         <div class="subgrupo">
           <strong>Wiki</strong>
           <ul class="tareas">
-            <li class="task" data-key="arbol_paginas" data-state="0">Árbol de páginas</li>
-            <li class="task" data-key="runbooks" data-state="0">Runbooks</li>
+            <li class="task" data-key="ado.estructuras.wiki.arbol_paginas" data-state="0">Árbol de páginas</li>
+            <li class="task" data-key="ado.estructuras.wiki.runbooks" data-state="0">Runbooks</li>
           </ul>
         </div>
       </article>
@@ -105,8 +105,8 @@
         <div class="subgrupo">
           <strong>Reporte</strong>
           <ul class="tareas">
-            <li class="task" data-key="migrado_vs_pendiente" data-state="0">Migrado vs. pendiente</li>
-            <li class="task" data-key="hallazgos" data-state="0">Hallazgos</li>
+            <li class="task" data-key="ado.cierre.reporte.migrado_vs_pendiente" data-state="0">Migrado vs. pendiente</li>
+            <li class="task" data-key="ado.cierre.reporte.hallazgos" data-state="0">Hallazgos</li>
           </ul>
         </div>
       </article>
@@ -114,27 +114,12 @@
   </div>
 </div>
 
+<!-- Firebase v8 (compat con initializeApp/database de tu script.js) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<!-- Tu lógica (usa el config + initializeApp que pegaste en script.js) -->
 <script src="script.js"></script>
-<!-- Firebase App (SDK principal) -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-<!-- Realtime Database -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
-
-<script>
-  const firebaseConfig = {
-    apiKey: "AZaSyCckk3cnd406blhgvOxRknoQbFoAfNUJc0",
-    authDomain: "migracionads.firebaseapp.com",
-    databaseURL: "https://migracionads-default-rtdb.firebaseio.com",
-    projectId: "migracionads",
-    storageBucket: "migracionads.appspot.com",
-    messagingSenderId: "242255460413",
-    appId: "1:242255460413:web:442ca0b9e9d97ad1dd5254"
-  };
-
-  // Inicializa Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
-</script>
 
 </body>
 </html>
